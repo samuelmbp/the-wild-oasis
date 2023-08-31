@@ -9,7 +9,7 @@ import FileInput from "../../ui/FileInput";
 import Textarea from "../../ui/Textarea";
 import FormRow from "../../ui/FormRow";
 
-function CreateCabinForm({ cabinToEdit = {} }) {
+function CreateCabinForm({ cabinToEdit = {}, onCloseModel }) {
   const { createCabin, isCreating } = useCreateCabin();
   const { editCabin, isEditing } = useEditCabin();
   const isWorking = isCreating || isEditing;
@@ -35,7 +35,10 @@ function CreateCabinForm({ cabinToEdit = {} }) {
       createCabin(
         { ...data, image: image },
         {
-          onSuccess: () => reset(),
+          onSuccess: () => {
+            reset();
+            onCloseModel?.();
+          },
         }
       );
   };
@@ -44,7 +47,10 @@ function CreateCabinForm({ cabinToEdit = {} }) {
     // console.log(errors);
   };
   return (
-    <Form onSubmit={handleSubmit(onSubmit, onError)}>
+    <Form
+      onSubmit={handleSubmit(onSubmit, onError)}
+      type={onCloseModel ? "modal" : "regular"}
+    >
       <FormRow label="Cabin name" error={errors?.name?.message}>
         <Input
           type="text"
@@ -93,10 +99,10 @@ function CreateCabinForm({ cabinToEdit = {} }) {
           disabled={isWorking}
           defaultValue={0}
           {...register("discount", {
-            required: "This field is required ",
+            required: "This field is required",
             validate: (value) =>
               value <= getValues().regularPrice ||
-              "Discount should be less than the regular price",
+              "Discount should be less than regular price",
           })}
         />
       </FormRow>
@@ -129,7 +135,11 @@ function CreateCabinForm({ cabinToEdit = {} }) {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button
+          variation="secondary"
+          type="reset"
+          onClick={() => onCloseModel?.()}
+        >
           Cancel
         </Button>
         <Button disabled={isWorking}>
