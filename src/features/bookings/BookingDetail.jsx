@@ -1,5 +1,12 @@
 import styled from "styled-components";
 
+import { useMoveBack } from "../../hooks/useMoveBack";
+import { useBooking } from "./useBooking";
+import { useNavigate } from "react-router-dom";
+import { HiArrowUpOnSquare } from "react-icons/hi2";
+import { useCheckout } from "../check-in-out/useCheckout";
+import { useDeleteBooking } from "../check-in-out/useDeleteBooking";
+
 import BookingDataBox from "./BookingDataBox";
 import Row from "../../ui/Row";
 import Heading from "../../ui/Heading";
@@ -7,16 +14,10 @@ import Tag from "../../ui/Tag";
 import ButtonGroup from "../../ui/ButtonGroup";
 import Button from "../../ui/Button";
 import ButtonText from "../../ui/ButtonText";
-
-import { useMoveBack } from "../../hooks/useMoveBack";
-import { useBooking } from "./useBooking";
 import Spinner from "../../ui/Spinner";
-import { useNavigate } from "react-router-dom";
-import { HiArrowUpOnSquare } from "react-icons/hi2";
-import { useCheckout } from "../check-in-out/useCheckout";
 import Modal from "../../ui/Modal";
 import ConfirmDelete from "../../ui/ConfirmDelete";
-import { useDeleteBooking } from "../check-in-out/useDeleteBooking";
+import Empty from "../../ui/Empty";
 
 const HeadingGroup = styled.div`
   display: flex;
@@ -32,6 +33,8 @@ function BookingDetail() {
   const moveBack = useMoveBack();
 
   if (isLoading) return <Spinner />;
+
+  if (!booking) return <Empty resource="booking" />;
 
   const { status, id: bookingId } = booking;
 
