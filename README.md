@@ -31,3 +31,14 @@ Here are a few examples of how the application works;
 8. Users are able to define different application-wide settings such as:
    - breakfast price, min and max nights/booking, max guests/booking
 9. Switch between dark and light mode
+
+## Media
+
+![Timeline](/public/dashboard-1.png)
+![Timeline](/public/dashboard-2.png)
+![Timeline](/public/bookings.png)
+![Timeline](/public/bookings-pagination.png)
+![Timeline](/public/cabins.png)
+![Timeline](/public/cabins-add.png)
+![Timeline](/public/settings.png)
+![Timeline](/public/update-user.png)
