@@ -8,9 +8,7 @@ import SpinnerMini from "../../ui/SpinnerMini";
 
 function LoginForm() {
   const [email, setEmail] = useState("test@example.com");
-  const [password, setPassword] = useState(
-    import.meta.env.VITE_APP_LOGIN_PASSWORD
-  );
+  const [password, setPassword] = useState("password123");
   const { login, isLoading } = useLogin();
 
   function handleSubmit(e) {
