@@ -17,6 +17,7 @@ import Booking from "./pages/Booking";
 import Checkin from "./pages/Checkin";
 import ProtectedRoute from "./ui/ProtectedRoute";
 import { DarkModeProvider } from "./context/DarkModeContext";
+import DisableDataMutation from "./ui/DisableDataMutation";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,6 +34,7 @@ const App = () => {
         <ReactQueryDevtools initialIsOpen={false} />
 
         <GlobalStyles />
+        <DisableDataMutation />
         <BrowserRouter>
           <Routes>
             <Route
