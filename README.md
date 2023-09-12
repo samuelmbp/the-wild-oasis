@@ -1,6 +1,6 @@
 # The Wild Oasis
 
-A small boutique hotel with 8 luxurious wooden cabins.
+The Wild Oasis is a boutique hotel featuring eight luxurious wooden cabins, and it is complemented by an employee-centric app. User login is a prerequisite for task execution, and new registrations are restricted to the app to ensure exclusive access for staff members.
 
 ## Getting Started
 
